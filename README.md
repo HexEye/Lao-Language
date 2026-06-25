@@ -26,7 +26,7 @@ print this "Welcome to Lao!"
 
 ---
 
-2. File Operations (Human-Readable Scripting)
+## 2. File Operations (Human-Readable Scripting)
 
 create a file "config.txt"
 write this "volume=100" into "config.txt"
@@ -67,14 +67,18 @@ Result: Massive reduction in file size and automatic code obfuscation!
 ---
 
 🗺️ Roadmap & Future Goals
+
 [1] Lao Interactive Playground: A web-based interpreter to write Lao directly in the browser.
 
+
 [2] VS Code Extension: Syntax highlighting for .lao and .olao files.
+
 
 🤝 Contributing & License
 Lao is an open-source project created by Hex_Eye (Young developer). Contributions, ideas, and suggestions are highly welcome!
 
+
 Distributed under the MIT License.
 
-This language is still under development. You can contribute to this language for free! AI assistance was utilized for code optimization and boilerplate generation.
 
+This language is still under development. You can contribute to this language for free! AI assistance was utilized for code optimization and boilerplate generation.
