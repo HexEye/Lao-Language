@@ -43,23 +43,13 @@ end
 
 To make the code ultra-lightweight for production or game engines, Lao compresses long English commands into single-character symbols.
 
-Lao Command           .olao Symbol           Function
+Lao Command = create a file     delete this file    print this            write this             end
 
 
-create a file              +f            Creates a new file
+.olao Command =     +f                 -f               ?@                     w>                .
 
 
-delete this file           -f            Removes a file
-
-
-print this                 ?@            Prints to terminal
-
-
-write this                 w>            Appends text to a file
-
-
-end                        .             Ends the program
-
+Function =  Creates a new file, Removes a file, Prints to terminal, Appends text to a file, Ends the program
 
 ---
 
