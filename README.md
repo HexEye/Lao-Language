@@ -43,7 +43,7 @@ end
 
 To make the code ultra-lightweight for production or game engines, Lao compresses long English commands into single-character symbols.
 
-Lao Command = create a file     delete this file    print this            write this             end
+Lao Command = create a file,     delete this file,    print this,            write this,             end
 
 
 .olao Command =     +f,                -f,               ?@,                     w>,                .
