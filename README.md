@@ -46,7 +46,7 @@ To make the code ultra-lightweight for production or game engines, Lao compresse
 Lao Command = create a file     delete this file    print this            write this             end
 
 
-.olao Command =     +f                 -f               ?@                     w>                .
+.olao Command =     +f,                -f,               ?@,                     w>,                .
 
 
 Function =  Creates a new file, Removes a file, Prints to terminal, Appends text to a file, Ends the program
