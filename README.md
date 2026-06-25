@@ -28,9 +28,13 @@ print this "Welcome to Lao!"
 
 ## 2. File Operations (Human-Readable Scripting)
 
+
 create a file "config.txt"
+
 write this "volume=100" into "config.txt"
+
 delete this file "old_logs.txt"
+
 end
 
 ---
@@ -40,11 +44,22 @@ end
 To make the code ultra-lightweight for production or game engines, Lao compresses long English commands into single-character symbols.
 
 Lao Command           .olao Symbol           Function
+
+
 create a file              +f            Creates a new file
+
+
 delete this file           -f            Removes a file
+
+
 print this                 ?@            Prints to terminal
+
+
 write this                 w>            Appends text to a file
+
+
 end                        .             Ends the program
+
 
 ---
 
