@@ -1,4 +1,4 @@
-<img width="1200" height="400" alt="lao-banner" src="https://github.com/user-attachments/assets/6ada71cc-4a94-424e-8e92-49b443a6f200" />
+<img width="1200" height="400" alt="Add a heading (3)" src="https://github.com/user-attachments/assets/3e68b29c-3a2a-4f78-ae3f-7995455871b8" />
 🚀 Lao-Language (LaoLang)
 
 An ultra-readable, educational programming language designed for absolute beginners, kids, and schools. 
