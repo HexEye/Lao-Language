@@ -3,19 +3,20 @@ local VERSION = "1.0.1 Alpha"
 local VERSION_DATE = "2026-06-27"
 
 local config = {
-    allowed_extensions = { ".txt", ".lao", ".olao", ".json", ".csv", ".lua" }
+    allowed_extensions = {},
+    log_enabled = true  -- YENİ: Log açıqdır (default)
 }
 
 local dictionary = {
     ["create a file"] = "+f",
     ["delete this file"] = "-f",
-    ["print this"] = "?@",
-    ["slowprint this"] = "s?@",
+    ["print this"] = "@",
+    ["slowprint this"] = "s@",
     ["write this"] = "w>",
     ["into"] = "->",
     ["go to website"] = "g2w",
     ["wait for"] = "w4",
-    ["compress this .lao file from .olao"] = "c2o",
+    ["compress this .lao file from .olao"] = "c20",
     ["open"] = "op",
     ["ask"] = "sk",
     ["if"] = "if",
@@ -30,7 +31,9 @@ local dictionary = {
     ["read line"] = "rl",
     ["get time"] = "gt",
     ["get date"] = "gd",
-    ["get datetime"] = "gdt"
+    ["get datetime"] = "gdt",
+    ["errorlogfile on"] = "elf+",     -- YENİ
+    ["errorlogfile off"] = "elf-"     -- YENİ
 }
 
 local variables = {}
@@ -49,6 +52,7 @@ local colors = {
 }
 
 local function log_error(msg)
+    if not config.log_enabled then return end  -- YENİ: Log bağlıdırsa, heç nə yazma!
     local log_file = io.open("lao_error.log", "a")
     if log_file then
         log_file:write(os.date("%Y-%m-%d %H:%M:%S") .. " - " .. msg .. "\n")
@@ -57,19 +61,6 @@ local function log_error(msg)
 end
 
 local function sanitize_filepath(path)
-    if path:find("..") or path:find("~") then
-        return nil, "Invalid file path"
-    end
-    local ext = path:match("%.[^.]+$")
-    if ext then
-        local allowed = false
-        for _, e in ipairs(config.allowed_extensions) do
-            if ext == e then allowed = true break end
-        end
-        if not allowed then
-            return nil, "File extension not allowed: " .. ext
-        end
-    end
     return path, nil
 end
 
@@ -165,6 +156,8 @@ function lao.show_help()
         local padding = string.rep(" ", 35 - #word)
         print(" " .. word .. padding .. "| " .. symbol)
     end
+    print("=======================================================")
+    print("Error Log Status: " .. (config.log_enabled and "ON" or "OFF"))  -- YENİ
     print("=======================================================\n")
 end
 
@@ -189,6 +182,20 @@ function lao.run_line(raw_line)
         print("Lao Language Engine v" .. VERSION)
         print("Release Date: " .. VERSION_DATE)
         print("Runtime: Lua " .. _VERSION)
+        return true
+    end
+
+    -- YENİ: Error Log AÇ
+    if line == "errorlogfile on" then
+        config.log_enabled = true
+        print("[Lao]: Error log file is now ON")
+        return true
+    end
+
+    -- YENİ: Error Log BAĞLA
+    if line == "errorlogfile off" then
+        config.log_enabled = false
+        print("[Lao]: Error log file is now OFF")
         return true
     end
 
@@ -462,7 +469,7 @@ function lao.run_line(raw_line)
 
     local suggestion = get_friendly_suggestion(line)
     print("[Lao]: " .. suggestion)
-    log_error("Unknown command: " .. line)
+    log_error("Unknown command: " .. line)  -- YENİ: Log bağlıdırsa yazmayacaq
     return true
 end
 
@@ -528,6 +535,7 @@ function lao.start_interactive()
     print("  Type 'help' for commands")
     print("  Type 'version' for info")
     print("  Type 'end' to exit")
+    print("  Type 'errorlogfile on/off' to toggle error log")
     print("====================================")
     
     local running = true
